@@ -1,8 +1,11 @@
-var request = require('supertest');
-var app = require('../app.js');
+var express = require('express');
  
-describe('GET /', function() {
-  it('respond with hello world', function(done) {
-    request(app).get('/').expect('hello world', done);
-  });
+var app = express();
+ 
+app.get('/', function (req, res) {
+  res.send('deployment test');
 });
+ 
+app.listen(process.env.PORT || 5000);
+ 
+module.exports = app;
